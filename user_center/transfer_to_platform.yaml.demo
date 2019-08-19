@@ -1,0 +1,19 @@
+# 与平台交互的路由
+default_ip: http://127.0.0.1:5001 #  平台的ip
+# 后台用户
+admin:
+  loan_op_account: /test  # 企业开户
+# 借款用户
+borrow:
+# 投资用户
+invest:
+  register: /users/register  # 用户开户,这个是account的注册接口，命名必须与usercenter相同，否则会出现被跨usercenter访问
+  login: /users/login  # 用户登陆
+  user_info: /users/user-info  # 用户账户信息
+  get_pay_salt: /users/get-pay-salt  # 获取支付盐
+  reset_pay_password: /users/reset-pay-password  # 重置支付密码
+  set_pay_password: /users/set-pay-password  # 设置支付密码
+  set_nick_name: /users/set-nick-name  # 设置昵称
+  set_avatar: /users/set-avatar  # 设置头像
+  set_user_mobile: /users/set-user-mobile  # 设置手机号
+  set_email: /users/set-email  # 设置email

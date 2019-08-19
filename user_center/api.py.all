@@ -1,0 +1,112 @@
+"""
+所有api的列表，不同的platform，仅会使用其中部分api，因此需要配置不同的api文件
+"""
+from flask import Flask
+from flask_restful import Api
+from flask_cors import CORS
+from controllers.time_controller import *
+from controllers.test_controller import *
+from controllers.admin_user_controller import *
+from controllers.api_token_controller import *
+from controllers.invest_user_controller import *
+from controllers.vcode_controller import *
+from controllers.borrow_user_controller import *
+from controllers.show_controller import *
+from controllers.transfer_controller import *
+
+
+app = Flask(__name__)
+# 这个from必须放这里，否则代码顺序就乱了
+from errors import error
+
+CORS(app)
+api = Api(app)
+
+
+# 测试
+api.add_resource(TestController, "/test")  # 测试接口
+api.add_resource(ShowController, "/show")  # 测试接口
+
+# 获取服务器时间
+api.add_resource(ApiTimestampController, "/timestamp")
+
+
+# admin_user
+api.add_resource(BgGenerateRegisterKeySaltController, "/bg/users/get-register-salt")  # 获取注册salt
+api.add_resource(AdminUserRegisterController, "/bg/users/register")  # 后台用户注册
+api.add_resource(BgGenerateLoginKeySaltController, "/bg/users/get-login-salt")  # 获取登录salt
+api.add_resource(AdminUserLoginController, "/bg/users/login")  # 后台用户登录
+api.add_resource(BgRefreshAccessTokenController, "/bg/users/refresh-token")  # 刷新access_token
+api.add_resource(BgGetUserMessageController, "/bg/users/message")  # 这个是解析客户端传来的用户信息
+api.add_resource(BgGetUserInfoController, "/bg/users/info")  # 这个是平台用的获取用户信息
+api.add_resource(AdminUserResetLoginPasswordController, "/bg/users/reset-login-password")  # 重置登录密码
+api.add_resource(AdminUserRegisterByAdminController, "/bg/users/new-user")  # 后台高权限用户生成普通后台用户
+api.add_resource(AdminUserDeleteByAdminController, "/bg/users/delete-user")  # 后台高权限用户生成普通后台用户
+api.add_resource(AdminUserChangeRightsByAdminController, "/bg/users/change-user-right")  # 后台高权限用户修改普通后台用户
+api.add_resource(AdminUserListRightsByAdminController, "/bg/users/list-user-right")  # 后台高权限用户获取普通后台用户
+
+
+# invest_user
+api.add_resource(InvestUserGenerateRegisterKeySaltController, "/invest/users/get-register-salt")  # 获取注册salt
+api.add_resource(InvestUserGetPictureVCodeController, "/invest/send-picture-vcode")  # 发送注册图形验证码
+api.add_resource(InvestUserSendRegisterVCodeController, "/invest/send-register-vcode")  # 发送注册验证码
+api.add_resource(InvestUserRegisterSignatureController, "/invest/send-register-signature")  # 获取表单提交校验码
+api.add_resource(InvestUserRegisterController, "/invest/users/register")  # 用户注册
+api.add_resource(InvestGenerateLoginKeySaltController, "/invest/users/get-login-salt")  # 获取登录salt
+api.add_resource(InvestUserLoginController, "/invest/users/login")  # 用户登录
+api.add_resource(InvestRefreshAccessTokenController, "/invest/users/refresh-token")  # 刷新access_token
+api.add_resource(InvestGetUserMessageController, "/invest/users/message")  # 解析平台转来客户端传来的用户信息
+api.add_resource(InvestGetUserInfoController, "/invest/users/info")  # 平台用的获取用户信息
+api.add_resource(InvestUpdateUserInfoController, "/invest/users/update-info")  # 平台用的更新用户信息
+api.add_resource(InvestUserClientInfoController, "/invest/users/user-info")  # 客户端投资用户个人信息
+api.add_resource(InvestUserChangeLoginPasswordController, "/invest/users/change-login-password")  # 登录状态下修改登录密码
+api.add_resource(InvestGeneratePayKeySaltController, "/user/users/get-pay-salt")  # 获取交易密码salt
+api.add_resource(InvestUserAuthenticationController, "/user/users/real-name-authentication")  # 实名认证
+api.add_resource(InvestUserSendResetPayPDVCodeController, "/user/users/send-reset-pay-pd-vcode")  # 发送重制交易密码的验证码
+api.add_resource(InvestUserResetPayPasswordController, "/user/users/reset-pay-password")  # 重置交易密码
+api.add_resource(InvestUserSetMobileController, "/user/users/set-user-mobile")  # 设置手机号
+api.add_resource(InvestUserEmailController, "/user/users/set-email")  # 设置email
+api.add_resource(InvestUserNickNameController, "/user/users/set-nick-name")  # 设置昵称
+api.add_resource(InvestUserSendSetPayPDVCodeController, "/user/users/send-set-pay-pd-vcode")  # 发送设置交易密码的验证码
+api.add_resource(InvestUserPayPWDController, "/user/users/set-pay-password")  # 设置支付密码
+api.add_resource(InvestUserAvatarController, "/user/users/set-avatar")  # 设置头像
+
+# api.add_resource(InvestUserGetResetPWDPictureVCodeController, "/inv/send-resetpwd-picture-vcode")  # 发送重置密码图形验证码
+# api.add_resource(InvestUserSendResetPWDVCodeController, "/inv/send-resetpwd-vcode")  # 发送重置密码验证码
+# api.add_resource(InvestUserResetLoginPasswordController, "/inv/users/reset-login-password")
+# 未登录状态下重置登录密码, 仅仅凭手机号和短信验证码就能重置密码，感觉风险有点高，故而暂时屏蔽
+
+# borrow_user
+api.add_resource(BorrowUserGenerateRegisterKeySalt, "/borrow/users/get-register-salt")  # 获取注册salt
+api.add_resource(BorrowUserGetPictureVCodeController, "/borrow/send-picture-vcode")  # 发送注册图形验证码
+api.add_resource(BorrowUserSendRegisterVCodeController, "/borrow/send-register-vcode")  # 发送注册验证码
+api.add_resource(BorrowUserRegisterSignatureController, "/borrow/send-register-signature")  # 获取表单提交校验码
+api.add_resource(BorrowUserRegisterController, "/borrow/users/register")  # 用户注册
+api.add_resource(BorrowGenerateLoginKeySalt, "/borrow/users/get-login-salt")  # 获取登录salt
+api.add_resource(BorrowUserLoginController, "/borrow/users/login")  # 用户登录
+api.add_resource(BorrowRefreshAccessTokenController, "/borrow/users/refresh-token")  # 刷新access_token
+api.add_resource(BorrowGetUserMessageController, "/borrow/users/message")  # 解析平台转来客户端传来的用户信息
+api.add_resource(BorrowGetUserInfoController, "/borrow/users/info")  # 平台用的获取用户信息
+api.add_resource(BorrowUpdateUserInfoController, "/borrow/users/update-info")  # 平台用的更新用户信息
+api.add_resource(BorrowUserClientInfoController, "/borrow/users/user-info")  # 客户端投资用户个人信息
+api.add_resource(BorrowUserChangeLoginPasswordController, "/borrow/users/change-login-password")  # 登录状态下修改登录密码
+
+
+# 与平台交互, 具体映射详见 transfer_to_platform.yaml
+api.add_resource(AdminTransferToPlatform1LoginController, "/admin/users/loan_op_account")
+api.add_resource(AdminTransferToPlatform2LoginController, "/admin/users/loan_op_account")
+api.add_resource(InvestTransferToPlatformLoginController, "/user/users/loan_op_account")
+api.add_resource(InvestPayTransferToPlatformLoginController, "/user/users/pay_account")  # 支付
+
+# 交互
+api.add_resource(PlatformCheckFormTokenController, "/transfer/<string:token>")  # 后台用户与其他平台交互
+api.add_resource(UsersTransferToPlatformController, "/bg/users/<path:path>", "/users/<path:path>")  # 用户与其他平台交互
+api.add_resource(CommonTransferToPlatformController, "/common/<path:path>")  # 用户与其他平台交互
+
+# 仅开发环境使用
+api.add_resource(DevInvestUserGenerateRegisterKeySaltController, "/users/dev-get-register-salt")  # 获取注册salt
+api.add_resource(DevInvestGenerateLoginKeySaltController, "/users/dev-get-login-salt")  # 获取登录salt
+
+
+
+

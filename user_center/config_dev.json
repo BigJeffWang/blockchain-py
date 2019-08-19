@@ -1,0 +1,72 @@
+{
+  "mysql": {
+    "db": "UserCenter",
+    "host": "xxx.cnzvcx1qv3xd.us-east-2.rds.amazonaws.com",
+    "password": "xxx",
+    "user": "H34pHJ2jdtGC",
+    "port": "3306"
+  },
+  "redis": {
+    "host": "xxx.ubyu7l.ng.0001.use2.cache.amazonaws.com",
+    "port": "6379",
+    "db": "9",
+    "password": ""
+  },
+  "mq": {
+    "host": "172.17.98.149",
+    "queue": "dev_queue",
+    "user_name": "hqbuser",
+    "password": "xxx",
+    "vhost": "/usercenter_dev",
+    "port": 5672
+  },
+  "whitelist": {
+    "all": ["*.*.*.*"]
+  },
+  "transfer_platform_ip": ["*.*.*.*"],
+  "sms": {
+    "sign_name": "CosmosChain",
+    "template_code": "SMS_141607394",
+    "region": "cn-hangzhou",
+    "product_name": "Dysmsapi",
+    "domain": "dysmsapi.aliyuncs.com"
+  },
+  "aws": {
+    "aws_access_key_id": "AKIAJKPANAS5WEWGGGIQ",
+    "aws_secret_access_key": "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"
+  },
+  "password": {
+    "change_method": ""
+  },
+  "register_by": [
+    "1",
+    "2"
+  ],
+  "email": {
+    "user": "service@luckypark.io",
+    "pwd": "xxx",
+    "subject": "hjiohoia",
+    "smtp_server": "smtp.mail.eu-west-1.awsapps.com",
+    "smtp_port": 465
+  },
+  "use_source": "1",
+  "bases": {
+    "server_name": "user_center",
+    "server_host": "0.0.0.0",
+    "server_port": "5010",
+    "log_path": "/data/logs"
+  },
+  "env": "test",
+  "close_all_aes": false,
+  "aes_to_client": true,
+  "zt": {
+    "user_name": "BITC88hy",
+    "password": "xxx",
+    "send_url": "http://api.zthysms.com/sendSms.do"
+  },
+  "intel_zt": {
+    "user_name": "BITC88gjhy",
+    "password": "xxx",
+    "send_url": "http://intl.zthysms.com/intSendSms.do"
+  }
+}
