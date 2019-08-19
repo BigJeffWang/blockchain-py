@@ -1,0 +1,224 @@
+{
+  "version": 1,
+  "formatters": {
+    "simple": {
+      "format": "[%(asctime)s] - %(name)s - %(levelname)s - %(message)s"
+    }
+  },
+  "handlers": {
+    "console": {
+      "class": "logging.StreamHandler",
+      "level": "DEBUG",
+      "formatter": "simple",
+      "stream": "ext://sys.stdout"
+    },
+    "info_file_handler": {
+      "class": "logging.handlers.RotatingFileHandler",
+      "level": "INFO",
+      "formatter": "simple",
+      "filename": "info.log",
+      "maxBytes": 10485760,
+      "backupCount": 50,
+      "encoding": "utf8"
+    },
+    "error_file_handler": {
+      "class": "logging.handlers.RotatingFileHandler",
+      "level": "ERROR",
+      "formatter": "simple",
+      "filename": "errors.log",
+      "maxBytes": 10485760,
+      "backupCount": 20,
+      "encoding": "utf8"
+    },
+    "game_bet_in_info_file_handler": {
+      "class": "logging.handlers.RotatingFileHandler",
+      "level": "INFO",
+      "formatter": "simple",
+      "filename": "game_bet_in_info.log",
+      "maxBytes": 10485760,
+      "backupCount": 50,
+      "encoding": "utf8"
+    },
+    "game_bet_in_error_file_handler": {
+      "class": "logging.handlers.RotatingFileHandler",
+      "level": "ERROR",
+      "formatter": "simple",
+      "filename": "game_bet_in_error.log",
+      "maxBytes": 10485760,
+      "backupCount": 20,
+      "encoding": "utf8"
+    },
+    "game_product_info_file_handler": {
+      "class": "logging.handlers.RotatingFileHandler",
+      "level": "INFO",
+      "formatter": "simple",
+      "filename": "game_product_info.log",
+      "maxBytes": 10485760,
+      "backupCount": 50,
+      "encoding": "utf8"
+    },
+    "game_product_error_file_handler": {
+      "class": "logging.handlers.RotatingFileHandler",
+      "level": "ERROR",
+      "formatter": "simple",
+      "filename": "game_product_error.log",
+      "maxBytes": 10485760,
+      "backupCount": 20,
+      "encoding": "utf8"
+    },
+    "block_info_file_handler": {
+      "class": "logging.handlers.RotatingFileHandler",
+      "level": "INFO",
+      "formatter": "simple",
+      "filename": "block_info.log",
+      "maxBytes": 10485760,
+      "backupCount": 50,
+      "encoding": "utf8"
+    },
+    "block_error_file_handler": {
+      "class": "logging.handlers.RotatingFileHandler",
+      "level": "ERROR",
+      "formatter": "simple",
+      "filename": "block_error.log",
+      "maxBytes": 10485760,
+      "backupCount": 20,
+      "encoding": "utf8"
+    },
+    "wallet_info_file_handler": {
+      "class": "logging.handlers.RotatingFileHandler",
+      "level": "INFO",
+      "formatter": "simple",
+      "filename": "wallet_info.log",
+      "maxBytes": 10485760,
+      "backupCount": 50,
+      "encoding": "utf8"
+    },
+    "wallet_error_file_handler": {
+      "class": "logging.handlers.RotatingFileHandler",
+      "level": "ERROR",
+      "formatter": "simple",
+      "filename": "wallet_error.log",
+      "maxBytes": 10485760,
+      "backupCount": 20,
+      "encoding": "utf8"
+    },
+    "script_info_file_handler": {
+      "class": "logging.handlers.RotatingFileHandler",
+      "level": "INFO",
+      "formatter": "simple",
+      "filename": "script_info.log",
+      "maxBytes": 10485760,
+      "backupCount": 50,
+      "encoding": "utf8"
+    },
+    "script_error_file_handler": {
+      "class": "logging.handlers.RotatingFileHandler",
+      "level": "ERROR",
+      "formatter": "simple",
+      "filename": "script_errors.log",
+      "maxBytes": 10485760,
+      "backupCount": 20,
+      "encoding": "utf8"
+    },
+    "game_publish_lottery_info_file_handler": {
+      "class": "logging.handlers.RotatingFileHandler",
+      "level": "INFO",
+      "formatter": "simple",
+      "filename": "game_publish_lottery_info.log",
+      "maxBytes": 10485760,
+      "backupCount": 50,
+      "encoding": "utf8"
+    },
+    "game_publish_lottery_error_file_handler": {
+      "class": "logging.handlers.RotatingFileHandler",
+      "level": "ERROR",
+      "formatter": "simple",
+      "filename": "game_publish_lottery_errors.log",
+      "maxBytes": 10485760,
+      "backupCount": 20,
+      "encoding": "utf8"
+    },
+    "timing_info_file_handler": {
+      "class": "logging.handlers.RotatingFileHandler",
+      "level": "INFO",
+      "formatter": "simple",
+      "filename": "timing_info.log",
+      "maxBytes": 10485760,
+      "backupCount": 50,
+      "encoding": "utf8"
+    },
+    "timing_error_file_handler": {
+      "class": "logging.handlers.RotatingFileHandler",
+      "level": "ERROR",
+      "formatter": "simple",
+      "filename": "timing_errors.log",
+      "maxBytes": 10485760,
+      "backupCount": 20,
+      "encoding": "utf8"
+    }
+  },
+  "loggers": {
+    "rs": {
+      "level": "DEBUG",
+      "handlers": [
+        "info_file_handler",
+        "error_file_handler"
+      ]
+    },
+    "game_bet_in": {
+      "level": "INFO",
+      "handlers": [
+        "game_bet_in_info_file_handler",
+        "game_bet_in_error_file_handler"
+      ]
+    },
+    "game_product": {
+      "level": "INFO",
+      "handlers": [
+        "game_product_info_file_handler",
+        "game_product_error_file_handler"
+      ]
+    },
+    "block": {
+      "level": "INFO",
+      "handlers": [
+        "block_info_file_handler",
+        "block_error_file_handler"
+      ]
+    },
+    "wallet": {
+      "level": "INFO",
+      "handlers": [
+        "wallet_info_file_handler",
+        "wallet_error_file_handler"
+      ]
+    },
+    "script": {
+      "level": "INFO",
+      "handlers": [
+        "script_info_file_handler",
+        "script_error_file_handler"
+      ]
+    },
+    "game_publish_lottery": {
+      "level": "INFO",
+      "handlers": [
+        "game_publish_lottery_info_file_handler",
+        "game_publish_lottery_error_file_handler"
+      ]
+    },
+    "timing": {
+      "level": "INFO",
+      "handlers": [
+        "timing_info_file_handler",
+        "timing_error_file_handler"
+      ]
+    }
+  },
+  "root": {
+    "level": "INFO",
+    "handlers": [
+      "console"
+    ]
+  }
+}
