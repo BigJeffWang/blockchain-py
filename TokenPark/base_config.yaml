@@ -1,0 +1,149 @@
+env: dev  # test=>测试 dev=>开发 pd=>正式
+bases:
+  server:
+    debug: true
+    name: TokenPark
+    host: 0.0.0.0
+    port: 5001
+  log_path: /data/logs
+
+mysql:
+  dev:
+    db: TokenPark
+    host: xxx.us-east-2.rds.amazonaws.com
+    port: 3306
+    user: xxx
+    psd: xxx
+  pd:
+    db: TokenPark
+    host: xxx.us-east-2.rds.amazonaws.com
+    port: 3306
+    user: xxx
+    psd: xxx
+
+mysql_eos:
+  dev:
+    db: TokenPark
+    host: xxx.us-east-2.rds.amazonaws.com
+    port: 3306
+    user: xxx
+    psd: xxx
+  pd:
+    db: TokenPark
+    host: xxx.us-east-2.rds.amazonaws.com
+    port: 3306
+    user: xxx
+    psd: xxx
+
+redis:
+  dev:
+    host: xxx.0001.use2.cache.amazonaws.com
+    port: 6379
+    db: 2
+    password: ""
+  pd:
+    host: xxx.0001.use2.cache.amazonaws.com
+    port: 6379
+    db: 2
+    password: ""
+
+mq:
+  dev:
+    host: 172.17.98.149
+    queue: queue
+    user_name: xxx
+    password: xxx
+    vhost: /tokenpark_dev
+    port: 5672
+
+user_center:
+  dev:
+    base_url: http://127.0.0.1:8098
+    time_url: /timestamp
+    invest_message_url: /invest/users/message/cHez5S8F #  解析平台转来客户端传来的用户信息
+    invest_info_url: /invest/users/info/cHez5S8F #  平台用的获取用户信息
+    borrow_message_url: /borrow/users/message/cHez5S8F
+    borrow_info_url: /borrow/users/info/cHez5S8F
+    bg_message_url: /bg/users/message/cHez5S8F
+    bg_info_url: /bg/users/info/cHez5S8F
+  pd:
+    base_url: http://127.0.0.1:8098
+    time_url: /timestamp
+    invest_message_url: /invest/users/message/cHez5S8F #  解析平台转来客户端传来的用户信息
+    invest_info_url: /invest/users/info/cHez5S8F #  平台用的获取用户信息
+    borrow_message_url: /borrow/users/message/cHez5S8F
+    borrow_info_url: /borrow/users/info/cHez5S8F
+    bg_message_url: /bg/users/message/cHez5S8F
+    bg_info_url: /bg/users/info/cHez5S8F
+
+wallet_center:
+  dev:
+#    private_url: "http://172.168.86.38:8070/wallet/transaction"
+    private_url: "http://18.224.189.127:8070/wallet/transaction"
+  pd:
+    private_url: "http://172.168.27.240:8070/wallet/transaction"
+#    private_url: "http://127.0.0.1:8080/wallet/transaction"
+
+private_block_chain:
+  dev:
+    uri: http://18.224.144.225:8545
+    user: "0x319bd907e3b1270a6e20b75686020dbf52eb54f4"
+    password: "84e90a1c1919ceb197933bc653ed2648ad0771c844383ee43fee3401161b8e0f"
+  pd:
+    uri: http://172.168.23.147:8545
+    user: "0x3a8867e9be7fa990389bc099935217f5935c4880"
+    password: "83faaf1e74614b3f5d504b63e1cd2e6fa7c50b00d3f672fae53f08033127bd0f"
+
+sms_email:
+  dev:
+    send_email_config:
+      user: xxx@luckypark.io
+      pwd: xxx
+      subject: hjiohoia
+      smtp_server: smtp.mail.eu-west-1.awsapps.com
+      smtp_port: 465
+    gather:
+      redis_second: 60
+      redis_key: gather
+      email_subject: 归集验证码
+      email: yuanrd@hiqianbao.com
+    withdraw:
+      redis_second: 60
+      redis_key: withdraw
+      email_subject: 提现验证码
+      email: yuanrd@hiqianbao.com
+    common:
+      redis_second: 60
+      redis_key: common
+      email_subject: 验证码
+      email: yuanrd@hiqianbao.com
+    withdraw_msg:
+      redis_key: withdraw_msg
+      email_subject: 提现申请待处理－提示邮件
+      email: jiangpj@leadnode.io
+  pd:
+    send_email_config:
+      user: xxx@luckypark.io
+      pwd: xxx
+      subject: hjiohoia
+      smtp_server: smtp.mail.eu-west-1.awsapps.com
+      smtp_port: 465
+    gather:
+      redis_second: 60
+      redis_key: gather
+      email_subject: 归集验证码
+      email: yuanrd@hiqianbao.com
+    withdraw:
+      redis_second: 60
+      redis_key: withdraw
+      email_subject: 提现验证码
+      email: yuanrd@hiqianbao.com
+    common:
+      redis_second: 60
+      redis_key: common
+      email_subject: 验证码
+      email: yuanrd@hiqianbao.com
+    withdraw_msg:
+      redis_key: withdraw_msg
+      email_subject: 提现申请待处理－提示邮件
+      email: jiangpj@leadnode.io
