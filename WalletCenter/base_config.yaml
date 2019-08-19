@@ -1,0 +1,52 @@
+env: dev  # test=>测试 dev=>开发 pd=>正式
+bases:
+  server:
+    debug: true
+    name: WalletCenter
+    host: 0.0.0.0
+    port: 8080
+    ip: https://xxx.xxxx.com  # 服务IP
+    entry_ip: http://39.105.32.xxx:20000  # 入口IP,Nginx反向代理
+  log_path: /data/logs
+
+mysql:
+  dev:
+    db: WalletCenter_dev
+    host: xxx.us-east-2.rds.amazonaws.com
+    port: 3306
+    user: xxx
+    psd: xxx
+  pd:
+    db: WalletCenter
+    host: xxx.us-east-2.rds.amazonaws.com
+    port: 3306
+    user: xxx
+    psd: xxx
+
+mysql_token:
+  dev:
+    db: TokenPark
+    host: xxx.us-east-2.rds.amazonaws.com
+    port: 3306
+    user: xxx
+    psd: xxx
+  pd:
+    db: TokenPark
+    host: xxx.us-east-2.rds.amazonaws.com
+    port: 3306
+    user: xxx
+    psd: xxx
+
+white_list:
+  dev:
+    ip: ["127.0.0.1", "172.168.66.67", "172.31.19.35", "192.168.1.246"]
+  pd:
+    ip: ["127.0.0.1", "172.168.6.41"]
+
+wallet:
+  dev:
+    wallet_key: "xxx"
+    pub_key: "xxx"
+  pd:
+    wallet_key: "xxx"  # 本地
+    pub_key: "xxx"
